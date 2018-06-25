@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${mensaje}"></title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+<link rel="stylesheet"  th:href="@{/css/style.css}"></link>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Spring Boot</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div>
+			<h1 th:text="${mensaje}"></h1>
+			<h2>Decorando con estilos CSS - Recursos estáticos</h2>
+		</div>
+	</div>
+	<div class="container">
+		<hr />
+		<footer>
+			<img th:src="@{/imagenes/spring.png}"></img>
+			<p>&copy; Company 2018</p>
+		</footer>
+	</div>
+
+
+</body>
+</html>
