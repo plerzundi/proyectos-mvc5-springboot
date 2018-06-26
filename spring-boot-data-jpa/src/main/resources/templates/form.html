@@ -2,11 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title th:text="${titulo}"></title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+<title th:text="${titulo}"></title>
 </head>
 <body>
+
 
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">Spring Boot</a>
@@ -24,33 +25,33 @@
 	</nav>
 
 
+
+
 	<div class="container">
-		<h1
-			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
-			th:text="${titulo}"></h1>
-		<a th:href="@{/form}">Crear Cliente</a>
-		<table class="table table-striped">
-			<thead>
-			</thead>
+	<h1 th:text="${titulo}" class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+
+	<form th:action="@{/form}" th:object="${cliente}" method="POST">
+		<table>
+
 			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Email</th>
-				<th>Fecha</th>
+				<td>Nombre</td>
+				<td><input type="text" th:field="*{nombre}" class="form-control" /></td>
 			</tr>
-
-			<tbody>
-				<tr th:each="cliente: ${clientes}">
-					<td th:text="${cliente.id}"></td>
-					<td th:text="${cliente.nombre}"></td>
-					<td th:text="${cliente.apellido}"></td>
-					<td th:text="${cliente.email}"></td>
-					<td th:text="${cliente.createAt}"></td>
-				</tr>
-
-			</tbody>
+			<tr>
+				<td>Apellido</td>
+				<td><input type="text" th:field="*{apellido}" class="form-control" /></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="email" th:field="*{email}" class="form-control" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Crear Cliente" class="btn btn-primary"  /></td>
+			</tr>
 		</table>
+		<input type="hidden" th:field="*{id}" />
+	</form>
 	</div>
+
 </body>
 </html>
