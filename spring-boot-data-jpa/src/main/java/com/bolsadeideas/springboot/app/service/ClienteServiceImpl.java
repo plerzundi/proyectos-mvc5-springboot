@@ -19,7 +19,7 @@ public class ClienteServiceImpl implements IClienteService {
 	@Transactional(readOnly=true)
 	public List<Cliente> findAll() {
 		// TODO Auto-generated method stub
-		return clienteDao.findAll();
+		return (List<Cliente>) clienteDao.findAll();
 	}
 
 	@Override
