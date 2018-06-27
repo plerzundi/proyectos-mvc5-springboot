@@ -12,22 +12,21 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.bolsadeideas.springboot.app.models.dao.IClienteDao;
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
+import com.bolsadeideas.springboot.app.service.IClienteService;
 
 @Controller
 public class ClienteController {
 	
 	@Autowired // busca un componente registrado en el contenedor
 	//@Qualifier("clienteDaoJPA") indica el nombre del componente
-	private IClienteDao clienteDao;
+	private IClienteService clienteService;
 	
 	// hace una lista generica de los clientes
 	@RequestMapping(value="/listar",method=RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo","Listado de clientes");
-		model.addAttribute("clientes", clienteDao.findAll());
+		model.addAttribute("clientes", clienteService.findAll());
 		return "listar";
 	}
 	
@@ -46,7 +45,7 @@ public class ClienteController {
 			model.addAttribute("titulo","Listado de clientes");
 			return "form";
 		}
-		clienteDao.save(cliente);
+		clienteService.save(cliente);
 		return "redirect:listar";
 	}
 	
@@ -56,7 +55,7 @@ public class ClienteController {
 		Cliente cliente =null;
 		
 		if(id > 0) {
-			cliente = clienteDao.findOne(id);
+			cliente = clienteService.findOne(id);
 		}else {
 			return "redirect:/listar";
 		}
@@ -70,7 +69,7 @@ public class ClienteController {
 	public String eliminar(@PathVariable(value="id")Long id) {
 		
 		if(id>0) {
-			clienteDao.delete(id);
+			clienteService.delete(id);
 		}
 		return "redirect:/listar";
 	}
