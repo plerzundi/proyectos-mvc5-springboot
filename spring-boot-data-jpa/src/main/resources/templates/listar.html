@@ -1,27 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title th:text="${titulo}"></title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+<head th:replace="layout/layout :: head">
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Spring Boot</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="#about"
-					th:href="@{/listar}">Cliente</a></li>
-			</ul>
-		</div>
-	</nav>
+	<header th:replace="layout/layout :: header"></header>
 
 
 	<div class="container">
@@ -53,9 +36,16 @@
 					<td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/} + ${cliente.id}" th:text="'eliminar'" onclick="return confirm('¿Estás seguro que desea eliminar?');"></a></td>
 					
 				</tr>
-
 			</tbody>
 		</table>
 	</div>
+	
+	
+	
+		<footer th:replace="layout/layout :: footer"></footer>
+	
+	
+	
+	
 </body>
 </html>
