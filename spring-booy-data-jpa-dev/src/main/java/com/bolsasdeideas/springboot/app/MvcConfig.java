@@ -11,10 +11,9 @@ import java.nio.file.Paths;
 @Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
+
+    /**
     private final Logger log = LoggerFactory.getLogger(getClass());
-
-
-/**
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);
