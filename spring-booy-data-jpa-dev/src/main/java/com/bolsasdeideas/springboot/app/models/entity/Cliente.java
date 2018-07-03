@@ -15,10 +15,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "clientes")
 public class Cliente implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@Id
+    private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    private Long id;
     @NotEmpty
     private String nombre;
     @NotEmpty
@@ -38,11 +38,9 @@ public class Cliente implements Serializable {
     /**
      * Genera automaticamente la fecha
      *
-     @PrePersist
-     public void prePersist(){
-     createAt = new Date();
-     }
-
+     * @PrePersist public void prePersist(){
+     * createAt = new Date();
+     * }
      **/
 
 
@@ -90,6 +88,7 @@ public class Cliente implements Serializable {
     public String getFoto() {
         return foto;
     }
+
     public void setFoto(String foto) {
         this.foto = foto;
     }

@@ -12,38 +12,36 @@ import com.bolsadeideas.springboot.app.models.entity.Cliente;
 @Service
 public class ClienteServiceImpl implements IClienteService {
 
-	@Autowired
-	private IClienteDao clienteDao;
+    @Autowired
+    private IClienteDao clienteDao;
 
-	@Override
-	@Transactional(readOnly=true)
-	public List<Cliente> findAll() {
-		// TODO Auto-generated method stub
-		return (List<Cliente>) clienteDao.findAll();
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public List<Cliente> findAll() {
+        // TODO Auto-generated method stub
+        return (List<Cliente>) clienteDao.findAll();
+    }
 
-	@Override
-	@Transactional
-	public void save(Cliente cliente) {
-		clienteDao.save(cliente);
+    @Override
+    @Transactional
+    public void save(Cliente cliente) {
+        clienteDao.save(cliente);
 
-	}
+    }
 
-	@Override
-	@Transactional
-	public void delete(Long id) {
+    @Override
+    @Transactional
+    public void delete(Long id) {
 
-		clienteDao.delete(id);
-	}
+        clienteDao.delete(id);
+    }
 
-	@Override
-	@Transactional(readOnly=true)
-	public Cliente findOne(Long id) {
-		// TODO Auto-generated method stub
-		return clienteDao.findOne(id);
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public Cliente findOne(Long id) {
+        // TODO Auto-generated method stub
+        return clienteDao.findOne(id);
+    }
 
-	
-	
-	
+
 }

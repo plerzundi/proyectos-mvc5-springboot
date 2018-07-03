@@ -70,7 +70,6 @@ public class UploadFileServiceImpl implements IUploadFileService {
     }
 
 
-
     @Override
     public void deleteAll() {
         FileSystemUtils.deleteRecursively(Paths.get(UPLOADS_FOLDER).toFile());
@@ -84,11 +83,10 @@ public class UploadFileServiceImpl implements IUploadFileService {
     }
 
 
-    public Path getPath(String filename){
+    public Path getPath(String filename) {
         return Paths.get(UPLOADS_FOLDER).resolve(filename).toAbsolutePath();
 
     }
-
 
 
 }

@@ -1,11 +1,6 @@
 package com.bolsasdeideas.springboot.app.controllers;
 
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.Map;
-
-
 import com.bolsasdeideas.springboot.app.models.entity.Cliente;
 import com.bolsasdeideas.springboot.app.models.service.IClienteService;
 import com.bolsasdeideas.springboot.app.models.service.IUploadFileService;
@@ -26,6 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.Map;
 
 
 @Controller
@@ -111,6 +109,7 @@ public class ClienteController {
         model.put("titulo", "Editar Cliente");
         return "form";
     }
+
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
     public String guardar(@Valid Cliente cliente, BindingResult result, Model model,
