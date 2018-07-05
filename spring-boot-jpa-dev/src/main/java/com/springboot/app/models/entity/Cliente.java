@@ -1,7 +1,9 @@
 package com.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,7 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Listo y revisado
- * */
+ */
 
 
 @Entity
@@ -37,8 +39,13 @@ public class Cliente implements Serializable {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
-
     private String foto;
+
+    /*
+    * Un cliente tiene muchas facturas
+    * */
+    @OneToMany(mappedBy ="cliente" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Factura> facturas;
 
 
     /**
@@ -50,6 +57,14 @@ public class Cliente implements Serializable {
      **/
 
 
+    /**
+     * Contructor
+     */
+    public Cliente() {
+        this.facturas = new ArrayList<>();
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -57,7 +72,6 @@ public class Cliente implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getNombre() {
         return nombre;
@@ -98,5 +112,18 @@ public class Cliente implements Serializable {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
+    public void factura(Factura factura) {
+        facturas.add(factura);
+    }
+
 
 }
