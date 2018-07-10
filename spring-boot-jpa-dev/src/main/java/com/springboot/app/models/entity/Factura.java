@@ -1,5 +1,7 @@
 package com.springboot.app.models.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ public class Factura implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty
     private String descripcion;
     private String observacion;
     @Temporal(TemporalType.DATE)
@@ -25,7 +28,7 @@ public class Factura implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "factura_id")
     private List<ItemFactura> items;
 
