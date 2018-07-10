@@ -50,6 +50,21 @@
                     </div>
                 </div>
 
+                    <table th:replace="factura/plantilla-items :: itemsFactura"></table>
+
+                    <table id="cargarItemProductos" class="table table-sm table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
 
 
                 <div class="form-group row">
