@@ -1,8 +1,10 @@
 package com.springboot.app.models.service;
 
 import com.springboot.app.models.dao.IClienteDao;
+import com.springboot.app.models.dao.IFacturaDao;
 import com.springboot.app.models.dao.IProductoDao;
 import com.springboot.app.models.entity.Cliente;
+import com.springboot.app.models.entity.Factura;
 import com.springboot.app.models.entity.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,6 +26,8 @@ public class ClienteServiceImpl implements IClienteService {
     private IClienteDao clienteDao;
     @Autowired
     private IProductoDao productoDao;
+    @Autowired
+    private IFacturaDao facturaDao;
 
 
     @Override
@@ -57,8 +61,22 @@ public class ClienteServiceImpl implements IClienteService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Producto> findByNombre(String term) {
         return productoDao.findByNombreLikeIgnoreCase("%"+term+"%");
+    }
+
+    @Override
+    @Transactional
+    public void saveFactura(Factura factura) {
+        facturaDao.save(factura);
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Producto findProductoById(Long id) {
+        return productoDao.findOne(id);
     }
 }
 
