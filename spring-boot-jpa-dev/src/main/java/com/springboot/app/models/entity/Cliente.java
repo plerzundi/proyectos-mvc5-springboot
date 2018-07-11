@@ -42,9 +42,9 @@ public class Cliente implements Serializable {
     private String foto;
 
     /*
-    * Un cliente tiene muchas facturas
-    * */
-    @OneToMany(mappedBy ="cliente" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true)
+     * Un cliente tiene muchas facturas
+     * */
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Factura> facturas;
 
 
@@ -126,4 +126,8 @@ public class Cliente implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return nombre + " " + apellido;
+    }
 }
