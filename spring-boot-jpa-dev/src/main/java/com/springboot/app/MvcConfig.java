@@ -1,13 +1,11 @@
 package com.springboot.app;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @Configuration
-public class MvcConfig  extends WebMvcConfigurerAdapter {
+public class MvcConfig  implements WebMvcConfigurer {
 
      /**
       private final Logger log = LoggerFactory.getLogger(getClass());

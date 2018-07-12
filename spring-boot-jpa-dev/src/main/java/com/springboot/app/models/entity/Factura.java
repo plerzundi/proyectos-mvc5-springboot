@@ -1,6 +1,6 @@
 package com.springboot.app.models.entity;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
