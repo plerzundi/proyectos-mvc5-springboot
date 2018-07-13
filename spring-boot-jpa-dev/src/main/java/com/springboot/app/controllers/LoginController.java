@@ -14,7 +14,8 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(@RequestParam(value = "error",required = false) String error,
-             Model model, Principal principal, RedirectAttributes flash){
+                        @RequestParam(value = "logout",required = false) String logout,
+                        Model model, Principal principal, RedirectAttributes flash){
 
         if(principal != null){
             flash.addFlashAttribute("info","Ya ha iniciado sesión anteriormente");
@@ -24,6 +25,10 @@ public class LoginController {
         if(error !=null){
             model.addAttribute("error","Error en el login: Nombre del usuario o contraseña incorrecta" +
                     ", por favor vuelva intentarlo!");
+        }
+
+        if (logout != null){
+            model.addAttribute("success","Ha cerrado sesión con éxito!");
         }
 
 
