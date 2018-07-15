@@ -4,11 +4,13 @@ import com.springboot.app.auth.handler.LoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -21,11 +23,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // acceso de las rutas publicas y proteccion rutas privadas
         http.authorizeRequests().antMatchers("/","/css/**","/js/**","/images/**","/listar").permitAll()
-                .antMatchers("/ver/**").hasAnyRole("USER")
-                .antMatchers("/uploads/**").hasAnyRole("USER")
-                .antMatchers("/form/**").hasAnyRole("ADMIN")
-                .antMatchers("/eliminar/**").hasAnyRole("ADMIN")
-                .antMatchers("/factura/**").hasAnyRole("ADMIN")
+                //.antMatchers("/ver/**").hasAnyRole("USER")
+                //.antMatchers("/uploads/**").hasAnyRole("USER")
+                //.antMatchers("/form/**").hasAnyRole("ADMIN")
+                //.antMatchers("/eliminar/**").hasAnyRole("ADMIN")
+                //.antMatchers("/factura/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                     .formLogin()
