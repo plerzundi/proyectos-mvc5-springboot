@@ -1,6 +1,7 @@
 package com.springboot.app;
 
 import com.springboot.app.auth.handler.LoginSuccessHandler;
+import com.springboot.app.models.service.JpaUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,8 +22,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private LoginSuccessHandler successHandler;
 
+
+    //@Autowired
+    //private DataSource dataSource;
+
     @Autowired
-    private DataSource dataSource;
+    private JpaUserDetailService userDetailService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -55,11 +60,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-        build.jdbcAuthentication()
-                .dataSource(dataSource)
-                .passwordEncoder(passwordEncoder)
-                .usersByUsernameQuery("select username, password, enabled from users where username=?")
-                .authoritiesByUsernameQuery("select u.username, a.authority from authorities a inner join users u on (a.user_id=u.id) where u.username=?");
+        //build.jdbcAuthentication()
+          build.userDetailsService(userDetailService)
+               // .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder);
+                //.usersByUsernameQuery("select username, password, enabled from users where username=?")
+               // .authoritiesByUsernameQuery("select u.username, a.authority from authorities a inner join users u on (a.user_id=u.id) where u.username=?");
 
         /*
         * Guardamos usuaros In-Memory
